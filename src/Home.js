@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './Home.css';
-
 function Home() {
+  console.log(convertUSD(1));
   return (
     <div className="Home">
       <header className="Home-header">
@@ -20,6 +20,15 @@ function Home() {
       </header>
     </div>
   );
+}
+
+// make an api call to convert USD to Chinese Yen
+async function convertUSD(value) {
+  var requestURL =
+    'https://api.exchangerate.host/convert?from=USD&to=CNY&amount=' + value;
+  var response = await fetch(requestURL);
+  var responseJSON = await response.json();
+  return responseJSON.result;
 }
 
 export default Home;
