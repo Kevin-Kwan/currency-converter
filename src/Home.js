@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './Home.css';
 function Home() {
+  console.log(process.env.REACT_APP_TITLE);
   console.log(convertUSD(1));
+  console.log(getSymbols());
   return (
     <div className="Home">
       <header className="Home-header">
@@ -29,6 +31,19 @@ async function convertUSD(value) {
   var response = await fetch(requestURL);
   var responseJSON = await response.json();
   return responseJSON.result;
+}
+
+async function getSymbols() {
+  var requestURL = 'https://api.exchangerate.host/symbols';
+  var response = await fetch(requestURL);
+  var responseJSON = await response.json();
+  for (var key in responseJSON.symbols) {
+    if (responseJSON.symbols.hasOwnProperty(key)) {
+      console.log(key + ' -> ' + responseJSON.symbols[key]);
+      // to get country or code, do responseJSON.symbols[key].description or .code
+    }
+  }
+  return responseJSON.symbols;
 }
 
 export default Home;
