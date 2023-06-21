@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 function Dropdown() {
+  let chosenSymbol = '';
   const [symbols, setSymbols] = useState([]);
 
   useEffect(() => {
@@ -13,13 +14,22 @@ function Dropdown() {
   }, []);
 
   return (
-    <select onChange={(e) => console.log(e.target.value)}>
+    <select
+      onChange={(e) => {
+        chosenSymbol = parseSelectedSymbol(e.target.value);
+        console.log(chosenSymbol);
+      }}
+    >
       {symbols.map((symbol) => (
         <option key={symbol}>{symbol}</option>
       ))}
     </select>
     // get the selected value when selected
   );
+}
+
+function parseSelectedSymbol(symbol) {
+  return symbol.substring(0, 3);
 }
 
 async function getSymbols() {
