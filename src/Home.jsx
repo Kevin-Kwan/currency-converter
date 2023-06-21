@@ -5,13 +5,17 @@ import Dropdown from "./components/Dropdown.jsx";
 function Home() {
   return (
     <div className="Home">
-      <header className="Home-header">
-        <img src={logo} className="Home-logo" alt="logo" />
+      <img src={logo} className="Home-logo" alt="logo" />
+      <div className="Home-body">
         <div className="Dropdowns">
-          <Dropdown className="Base"></Dropdown>
-          <Dropdown className="Converted"></Dropdown>
+          <div className="Base">
+            <Dropdown></Dropdown>
+          </div>
+          <div className="Converted">
+            <Dropdown></Dropdown>
+          </div>
         </div>
-      </header>
+      </div>
     </div>
   );
 }

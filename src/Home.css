@@ -1,5 +1,6 @@
 .Home {
   text-align: center;
+  background-color: #282c34;
 }
 
 .Home-logo {
@@ -13,13 +14,11 @@
   }
 }
 
-.Home-header {
+.Home-body {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -39,4 +38,15 @@
 
 .Dropdowns {
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 40px;
+}
+
+.Base {
+  margin-right: 20px;
+}
+
+.Converted {
+  margin-left: 20px;
 }
