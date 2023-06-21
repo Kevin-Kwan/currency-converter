@@ -15,7 +15,6 @@
 }
 
 .Home-body {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,17 +35,13 @@
   }
 }
 
-.Dropdowns {
+.Dropdowns-container {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   margin: 40px;
 }
 
-.Base {
-  margin-right: 20px;
-}
-
-.Converted {
-  margin-left: 20px;
+.Dropdown {
+  margin: 50px;
 }

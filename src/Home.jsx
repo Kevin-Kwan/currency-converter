@@ -10,11 +10,11 @@ function Home() {
     <div className="Home">
       <img src={logo} className="Home-logo" alt="logo" />
       <div className="Home-body">
-        <div className="Dropdowns">
-          <div className="Base">
+        <div className="Dropdowns-container">
+          <div className="Dropdown">
             <Dropdown onSelect={handleBaseDropdownSelect}></Dropdown>
           </div>
-          <div className="Converted">
+          <div className="Dropdown">
             <Dropdown onSelect={handleConvertDropdownSelect}></Dropdown>
           </div>
         </div>

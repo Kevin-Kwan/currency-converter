@@ -12,8 +12,7 @@ function Dropdown({ onSelect }) {
   }, []);
 
   const handleSelectChange = (e) => {
-    const chosenSymbol = parseSelectedSymbol(e.target.value);
-    onSelect(chosenSymbol);
+    onSelect(e.target.value.substring(0, 3));
   };
 
   return (
@@ -23,10 +22,6 @@ function Dropdown({ onSelect }) {
       ))}
     </select>
   );
-}
-
-function parseSelectedSymbol(symbol) {
-  return symbol.substring(0, 3);
 }
 
 async function getSymbols() {
