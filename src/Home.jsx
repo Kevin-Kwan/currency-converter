@@ -1,10 +1,10 @@
-import logo from './logo.svg';
-import './Home.css';
-import Dropdown from './components/Dropdown.jsx';
-import FormAmount from './components/FormAmount.jsx';
+import logo from "./logo.svg";
+import "./Home.css";
+import Dropdown from "./components/Dropdown.jsx";
+import FormAmount from "./components/FormAmount.jsx";
 
-let baseCurrency = 'AED';
-let transferCurrency = 'AED';
+let baseCurrency = "AED";
+let transferCurrency = "AED";
 let inputValue = 0;
 
 function Home() {
@@ -15,11 +15,11 @@ function Home() {
         <div>
           <FormAmount onChange={handleFormAmountChange}></FormAmount>
         </div>
-        <div className="Dropdowns">
-          <div className="Base">
+        <div className="Dropdowns-container">
+          <div className="Dropdown">
             <Dropdown onSelect={handleBaseDropdownSelect}></Dropdown>
           </div>
-          <div className="Converted">
+          <div className="Dropdown">
             <Dropdown onSelect={handleConvertDropdownSelect}></Dropdown>
           </div>
         </div>
