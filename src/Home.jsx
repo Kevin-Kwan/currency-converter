@@ -1,20 +1,25 @@
-import logo from "./logo.svg";
-import "./Home.css";
-import Dropdown from "./components/Dropdown.jsx";
+import logo from './logo.svg';
+import './Home.css';
+import Dropdown from './components/Dropdown.jsx';
+import FormAmount from './components/FormAmount.jsx';
 
-let baseCurrency = "USD";
-let transferCurrency = "GBP";
+let baseCurrency = 'AED';
+let transferCurrency = 'AED';
+let inputValue = 0;
 
 function Home() {
   return (
     <div className="Home">
       <img src={logo} className="Home-logo" alt="logo" />
       <div className="Home-body">
-        <div className="Dropdowns-container">
-          <div className="Dropdown">
+        <div>
+          <FormAmount onChange={handleFormAmountChange}></FormAmount>
+        </div>
+        <div className="Dropdowns">
+          <div className="Base">
             <Dropdown onSelect={handleBaseDropdownSelect}></Dropdown>
           </div>
-          <div className="Dropdown">
+          <div className="Converted">
             <Dropdown onSelect={handleConvertDropdownSelect}></Dropdown>
           </div>
         </div>
@@ -36,13 +41,19 @@ async function convertUSD(value) {
 async function handleBaseDropdownSelect(currency) {
   baseCurrency = currency;
   console.log(baseCurrency);
-  console.log(convertUSD(4));
+  console.log(convertUSD(inputValue));
 }
 
 async function handleConvertDropdownSelect(currency) {
   transferCurrency = currency;
   console.log(transferCurrency);
-  console.log(convertUSD(4));
+  console.log(convertUSD(inputValue));
+}
+
+async function handleFormAmountChange(value) {
+  inputValue = value;
+  console.log(inputValue);
+  console.log(convertUSD(inputValue));
 }
 
 export default Home;
