@@ -1,8 +1,6 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-function Dropdown() {
-  let chosenSymbol = '';
+function Dropdown({ onSelect }) {
   const [symbols, setSymbols] = useState([]);
 
   useEffect(() => {
@@ -13,18 +11,17 @@ function Dropdown() {
     fetchData();
   }, []);
 
+  const handleSelectChange = (e) => {
+    const chosenSymbol = parseSelectedSymbol(e.target.value);
+    onSelect(chosenSymbol);
+  };
+
   return (
-    <select
-      onChange={(e) => {
-        chosenSymbol = parseSelectedSymbol(e.target.value);
-        console.log(chosenSymbol);
-      }}
-    >
+    <select onChange={handleSelectChange}>
       {symbols.map((symbol) => (
         <option key={symbol}>{symbol}</option>
       ))}
     </select>
-    // get the selected value when selected
   );
 }
 
@@ -33,13 +30,13 @@ function parseSelectedSymbol(symbol) {
 }
 
 async function getSymbols() {
-  var requestURL = 'https://api.exchangerate.host/symbols';
-  var response = await fetch(requestURL);
-  var responseJSON = await response.json();
+  const requestURL = "https://api.exchangerate.host/symbols";
+  const response = await fetch(requestURL);
+  const responseJSON = await response.json();
   const list = [];
-  for (var key in responseJSON.symbols) {
+  for (const key in responseJSON.symbols) {
     if (responseJSON.symbols.hasOwnProperty(key)) {
-      list.push(key + ': ' + responseJSON.symbols[key].description);
+      list.push(key + ": " + responseJSON.symbols[key].description);
     }
   }
   return list;
