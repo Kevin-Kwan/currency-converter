@@ -2,13 +2,16 @@ import logo from './logo.svg';
 import './Home.css';
 import Dropdown from './components/Dropdown.jsx';
 import FormAmount from './components/FormAmount.jsx';
+import { useState } from 'react';
 
 let baseCurrency = 'AED';
-let transferCurrency = 'AED';
+let transferCurrency = '';
 let inputValue = 0;
 let convertedValue = 0;
 
 function Home() {
+  const [value, setValue] = useState();
+
   return (
     <div className="Home">
       <img src={logo} className="Home-logo" alt="logo" />
@@ -24,39 +27,40 @@ function Home() {
             <Dropdown onSelect={handleConvertDropdownSelect}></Dropdown>
           </div>
         </div>
+        <a>
+          {value} {transferCurrency}
+        </a>
       </div>
     </div>
   );
-}
+  // make an api call to convert USD to Chinese Yen
+  async function convertUSD(value) {
+    if (value != 0) {
+      var requestURL =
+        `https://api.exchangerate.host/convert?from=${baseCurrency}&to=${transferCurrency}&amount=` +
+        value;
+      var response = await fetch(requestURL);
+      var responseJSON = await response.json();
+      var data = responseJSON.result;
+      convertedValue = data;
+      setValue(convertedValue);
+    }
+  }
 
-// make an api call to convert USD to Chinese Yen
-async function convertUSD(value) {
-  var requestURL =
-    `https://api.exchangerate.host/convert?from=${baseCurrency}&to=${transferCurrency}&amount=` +
-    value;
-  var response = await fetch(requestURL);
-  var responseJSON = await response.json();
-  var data = responseJSON.result;
-  convertedValue = data;
-  console.log(convertedValue);
-}
+  async function handleBaseDropdownSelect(currency) {
+    baseCurrency = currency;
+    convertUSD(inputValue);
+  }
 
-async function handleBaseDropdownSelect(currency) {
-  baseCurrency = currency;
-  console.log(baseCurrency);
-  console.log(convertUSD(inputValue));
-}
+  async function handleConvertDropdownSelect(currency) {
+    transferCurrency = currency;
+    convertUSD(inputValue);
+  }
 
-async function handleConvertDropdownSelect(currency) {
-  transferCurrency = currency;
-  console.log(transferCurrency);
-  console.log(convertUSD(inputValue));
-}
-
-async function handleFormAmountChange(value) {
-  inputValue = value;
-  console.log(inputValue);
-  console.log(convertUSD(inputValue));
+  async function handleFormAmountChange(value) {
+    inputValue = value;
+    convertUSD(inputValue);
+  }
 }
 
 export default Home;
