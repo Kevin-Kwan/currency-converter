@@ -1,11 +1,12 @@
-import logo from "./logo.svg";
-import "./Home.css";
-import Dropdown from "./components/Dropdown.jsx";
-import FormAmount from "./components/FormAmount.jsx";
+import logo from './logo.svg';
+import './Home.css';
+import Dropdown from './components/Dropdown.jsx';
+import FormAmount from './components/FormAmount.jsx';
 
-let baseCurrency = "AED";
-let transferCurrency = "AED";
+let baseCurrency = 'AED';
+let transferCurrency = 'AED';
 let inputValue = 0;
+let convertedValue = 0;
 
 function Home() {
   return (
@@ -35,7 +36,9 @@ async function convertUSD(value) {
     value;
   var response = await fetch(requestURL);
   var responseJSON = await response.json();
-  return responseJSON.result;
+  var data = responseJSON.result;
+  convertedValue = data;
+  console.log(convertedValue);
 }
 
 async function handleBaseDropdownSelect(currency) {
