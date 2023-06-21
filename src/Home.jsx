@@ -5,7 +5,7 @@ import FormAmount from './components/FormAmount.jsx';
 import { useState } from 'react';
 
 let baseCurrency = 'AED';
-let transferCurrency = '';
+let transferCurrency = 'AED';
 let inputValue = 0;
 let convertedValue = 0;
 
@@ -27,24 +27,20 @@ function Home() {
             <Dropdown onSelect={handleConvertDropdownSelect}></Dropdown>
           </div>
         </div>
-        <a>
-          {value} {transferCurrency}
-        </a>
+        <a>{inputValue !== 0 ? `${value} ${transferCurrency}` : ''}</a>
       </div>
     </div>
   );
   // make an api call to convert USD to Chinese Yen
   async function convertUSD(value) {
-    if (value != 0) {
-      var requestURL =
-        `https://api.exchangerate.host/convert?from=${baseCurrency}&to=${transferCurrency}&amount=` +
-        value;
-      var response = await fetch(requestURL);
-      var responseJSON = await response.json();
-      var data = responseJSON.result;
-      convertedValue = data;
-      setValue(convertedValue);
-    }
+    var requestURL =
+      `https://api.exchangerate.host/convert?from=${baseCurrency}&to=${transferCurrency}&amount=` +
+      value;
+    var response = await fetch(requestURL);
+    var responseJSON = await response.json();
+    var data = responseJSON.result;
+    convertedValue = data;
+    setValue(convertedValue);
   }
 
   async function handleBaseDropdownSelect(currency) {

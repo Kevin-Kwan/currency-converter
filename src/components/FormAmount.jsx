@@ -12,7 +12,7 @@ function FormAmount({ onChange }) {
         <input
           type="number"
           // i give up on regex, this is the best i can do
-          pattern="^-?\d+(?:\.\d+)?$"
+          pattern="[0-9]"
           placeholder="Enter amount to convert"
         ></input>
       </div>
