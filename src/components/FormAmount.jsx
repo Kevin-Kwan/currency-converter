@@ -1,4 +1,6 @@
-import React from 'react';
+import React from "react";
+
+import "./FormAmount.css";
 
 function FormAmount({ onChange }) {
   const handleSelectChange = (e) => {
@@ -7,7 +9,7 @@ function FormAmount({ onChange }) {
   };
   return (
     <form onChange={handleSelectChange}>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className="Currency-form">
         <label>Amount to Convert</label>
         <input
           type="number"

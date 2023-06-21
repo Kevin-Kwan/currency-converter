@@ -1,11 +1,11 @@
-import logo from './logo.svg';
-import './Home.css';
-import Dropdown from './components/Dropdown.jsx';
-import FormAmount from './components/FormAmount.jsx';
-import { useState } from 'react';
+import logo from "./logo.svg";
+import "./Home.css";
+import Dropdown from "./components/Dropdown.jsx";
+import FormAmount from "./components/FormAmount.jsx";
+import { useState } from "react";
 
-let baseCurrency = 'AED';
-let transferCurrency = 'AED';
+let baseCurrency = "AED";
+let transferCurrency = "AED";
 let inputValue = 0;
 let convertedValue = 0;
 
@@ -21,13 +21,17 @@ function Home() {
         </div>
         <div className="Dropdowns-container">
           <div className="Dropdown">
+            <a>From:</a>
             <Dropdown onSelect={handleBaseDropdownSelect}></Dropdown>
           </div>
           <div className="Dropdown">
+            <a>To:</a>
             <Dropdown onSelect={handleConvertDropdownSelect}></Dropdown>
           </div>
         </div>
-        <a>{inputValue !== 0 ? `${value} ${transferCurrency}` : ''}</a>
+        <a className="Input">
+          {inputValue !== 0 ? `${value} ${transferCurrency}` : ""}
+        </a>
       </div>
     </div>
   );

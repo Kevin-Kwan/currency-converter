@@ -26,7 +26,7 @@
   color: #61dafb;
 }
 
-@keyframes Home-logo-spin {
+@keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -44,4 +44,18 @@
 
 .Dropdown {
   margin: 50px;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.Dropdown a {
+  font-family: monospace;
+}
+
+.Input {
+  font-family: monospace;
+  font-size: 3rem;
+  color: #61dbfb;
+  font-weight: bold;
 }
