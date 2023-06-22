@@ -1,5 +1,5 @@
-# Currency Coverter Project
+# Currency Converter Project
 
 ## Publicis Sapient Internship Week 2
 
-### React and API currency coverter website: https://moneyconversion.netlify.app/
+### React and API currency converter website: https://moneyconversion.netlify.app/
