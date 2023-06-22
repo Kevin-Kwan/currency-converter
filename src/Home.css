@@ -43,7 +43,7 @@
 }
 
 .Dropdown {
-  margin: 50px;
+  margin: 3rem;
   border-radius: 2rem;
   display: flex;
   flex-direction: column;
@@ -58,4 +58,26 @@
   font-size: 3rem;
   color: #61dbfb;
   font-weight: bold;
+}
+
+@media only screen and (max-width: 480px) {
+  .Dropdowns-container {
+    flex-direction: column;
+  }
+
+  .Home {
+    width: 100vw;
+  }
+
+  .Dropdown {
+    margin: 0;
+    margin-top: 2rem;
+  }
+
+  .Input {
+    font-family: monospace;
+    font-size: 2.5rem;
+    color: #61dbfb;
+    font-weight: bold;
+  }
 }
