@@ -25,14 +25,12 @@ function Dropdown({ onSelect }) {
 }
 
 async function getSymbols() {
-  const requestURL = "https://api.exchangerate.host/symbols";
+  const requestURL = "https://v6.exchangerate-api.com/v6/347f7ad551cab73486725c31/codes";
   const response = await fetch(requestURL);
   const responseJSON = await response.json();
   const list = [];
-  for (const key in responseJSON.symbols) {
-    if (responseJSON.symbols.hasOwnProperty(key)) {
-      list.push(key + ": " + responseJSON.symbols[key].description);
-    }
+  for (const item of responseJSON.supported_codes) {
+    list.push(`${item[0]} : ${item[1]}`);
   }
   return list;
 }
