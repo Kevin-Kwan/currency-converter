@@ -1,20 +1,27 @@
-import React from "react";
+import React from 'react';
 
-import "./FormAmount.css";
+import './FormAmount.css';
 
 function FormAmount({ onChange }) {
   const handleSelectChange = (e) => {
-    const amountToConvert = e.target.value;
+    let amountToConvert = e.target.value;
+    if (amountToConvert === '' || amountToConvert < 0) {
+      amountToConvert = 0;
+    }
     onChange(amountToConvert);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <form onChange={handleSelectChange}>
+    <form onInput={handleSelectChange} onSubmit={handleSubmit}>
       <div className="Currency-form">
         <label>Amount to Convert</label>
         <input
           type="number"
-          // i give up on regex, this is the best i can do
-          pattern="[0-9]"
+          min="0"
           placeholder="Enter amount to convert"
         ></input>
       </div>
