@@ -37,12 +37,16 @@ function Home() {
   );
   // make an api call to convert USD to Chinese Yen
   async function convertUSD(value) {
-    var requestURL =
-      `https://v6.exchangerate-api.com/v6/347f7ad551cab73486725c31/pair/${baseCurrency}/${transferCurrency}/${value}`
-    var response = await fetch(requestURL);
-    var responseJSON = await response.json();
-    var data = responseJSON.conversion_result;
-    convertedValue = data;
+    if (value === 0) {
+      convertedValue = 0; // so we don't waste an api call on 0's
+    } else {
+      var requestURL =
+        `https://v6.exchangerate-api.com/v6/347f7ad551cab73486725c31/pair/${baseCurrency}/${transferCurrency}/${value}`
+      var response = await fetch(requestURL);
+      var responseJSON = await response.json();
+      var data = responseJSON.conversion_result;
+      convertedValue = data;
+    }
     setValue(convertedValue);
   }
 
